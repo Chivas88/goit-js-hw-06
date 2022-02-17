@@ -5,9 +5,7 @@
 // текста.
 const inputRef = document.querySelector('#font-size-control');
 const spanRef = document.querySelector('#text');
-
-console.log(inputRef);
-
+spanRef.style.fontSize = `${inputRef.value}px`;
 inputRef.addEventListener('input', changeInput);
 
 function changeInput(event) {

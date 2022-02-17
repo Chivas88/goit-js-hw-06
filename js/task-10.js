@@ -27,21 +27,23 @@ createBtnRef.addEventListener('click', createBoxes);
 destroyBtnRef.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
-  const markup = document.createElement("div");
-  markup.style.backgroundColor = getRandomHexColor();
-  markup.style.height = "30px";
-  markup.style.width = "30px";
-  boxes.append(markup);
-  console.log(markup)
-  // for (let i = 0; i < markup.lenght; i += 1) {
-  //   markup[i].style.height = "40px"
-  //   console.log(markup[i]);
-  // }
+  const elements = [];
+  amount = inputRef.value;
+  elements.length = amount;
+  for (let i = 0; i < amount; i += 1) {
+    const color = getRandomHexColor();
+    const baseSize = 30;
+    const biggestSize = baseSize + i * 10;
+    const element = document.createElement("div");
+    element.setAttribute('style', `width:${biggestSize}px;height:${biggestSize}px;
+    background-color:${color}`);
+    elements.push(element);
+    console.log(element);
+  }
+  boxes.append(...elements);
 }
 function destroyBoxes() {
   boxes.innerHTML = "";
 }
-inputRef.addEventListener("input", (event) => {
-  const amount = event.currentTarget.value;
-  console.log(amount)
-});
+
+
